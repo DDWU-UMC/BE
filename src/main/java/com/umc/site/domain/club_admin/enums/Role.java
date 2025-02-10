@@ -4,11 +4,11 @@ public enum Role {
 
     PRESIDENT,           // 회장
     VICE_PRESIDENT,      // 부회장
-    SPRING_BOOT_LEAD,    // SpringBoot 파트장
-    ANDROID_LEAD,        // Android 파트장
-    WEB_LEAD,            // Web 파트장
-    DESIGN_LEAD,         // Design 파트장
-    PLAN_LEAD,       // Plan 파트장
-    NODEJS_LEAD,         // Node.js 파트장
-    IOS_LEAD             // IOS 파트장
+    SPRING_BOOT_LEADER,    // SpringBoot 파트장
+    ANDROID_LEADER,        // Android 파트장
+    WEB_LEADER,            // Web 파트장
+    DESIGN_LEADER,         // Design 파트장
+    PLAN_LEADER,       // Plan 파트장
+    NODEJS_LEADER,         // Node.js 파트장
+    IOS_LEADER             // IOS 파트장
 }
