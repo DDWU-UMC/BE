@@ -10,5 +10,7 @@ public enum Role {
     DESIGN_LEADER,         // Design 파트장
     PLAN_LEADER,       // Plan 파트장
     NODEJS_LEADER,         // Node.js 파트장
-    IOS_LEADER             // IOS 파트장
+    IOS_LEADER,             // IOS 파트장
+
+    MANAGE_LEADER          // 운영팀장
 }
