@@ -1,4 +1,4 @@
-package com.umc.site.domain.club_admin.enums;
+package com.umc.site.domain.club_admin.entity.enums;
 
 public enum Role {
 
