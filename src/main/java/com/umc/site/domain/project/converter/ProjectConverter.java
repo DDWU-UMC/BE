@@ -45,4 +45,14 @@ public class ProjectConverter {
                 .image(ImageConverter.toImageDTO(image))
                 .build();
     }
+
+    // n기 다른 프로젝트 보기 목록 조회
+    public static ProjectResponseDTO.OtherProjectDTO toOtherProjectDTO(Project project, Image image) {
+        return ProjectResponseDTO.OtherProjectDTO.builder()
+                .projectId(project.getId())
+                .title(project.getTitle())
+                .serviceType(project.getServiceType())
+                .image(ImageConverter.toImageDTO(image))
+                .build();
+    }
 }
