@@ -25,13 +25,21 @@ public class Project extends BaseEntity {
     @Column(nullable = false, length = 20)
     private String title;
 
+    // 기획 사람들
+    @Column(length = 100)
+    private String pm;
+
     // 프론트엔드 사람들
-    @Column(nullable = false, length = 100)
+    @Column(length = 100)
     private String front_end;
 
     // 백엔드 사람들
-    @Column(nullable = false, length = 100)
+    @Column(length = 100)
     private String back_end;
+
+    // 디자인 사람들
+    @Column(length = 100)
+    private String design;
 
     // 서비스 유형
     @Enumerated(EnumType.STRING)
