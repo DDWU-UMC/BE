@@ -1,6 +1,6 @@
 package com.umc.site.domain.project.entity;
 
-import com.umc.site.domain.club_admin.enums.ServiceType;
+import com.umc.site.domain.project.enums.ServiceType;
 import com.umc.site.domain.cohort.entity.Cohort;
 import com.umc.site.domain.feature.entity.Feature;
 import com.umc.site.global.common.BaseEntity;
