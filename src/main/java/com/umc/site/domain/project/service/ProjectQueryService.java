@@ -11,4 +11,7 @@ public interface ProjectQueryService {
 
     // 프로젝트 상세 정보 조회
     ProjectResponseDTO.ProjectDetailDTO getProjectDetails(Long projectId);
+
+    // n기 다른 프로젝트 보기 목록 조회
+    List<ProjectResponseDTO.OtherProjectDTO> getOtherProjects(Long projectId);
 }

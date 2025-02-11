@@ -48,4 +48,22 @@ public class ProjectQueryServiceImpl implements ProjectQueryService{
 
         return ProjectConverter.toProjectDetailDTO(project, image, features);
     }
+
+    // n기 다른 프로젝트 보기 목록 조회
+    @Override
+    public List<ProjectResponseDTO.OtherProjectDTO> getOtherProjects(Long projectId){
+        Project project = projectRepository.findById(projectId)
+                .orElseThrow(() -> new ProjectHandler(ErrorStatus.PROJECT_NOT_FOUND));
+
+        Long cohortId = project.getCohort().getId();
+
+        List<Project> otherProjects = projectRepository.findRandomProjectsByCohortId(cohortId, projectId);
+
+        return otherProjects.stream()
+                .map(projects -> {
+                    Image image = imageRepository.findByProject(projects);
+                    return ProjectConverter.toOtherProjectDTO(projects, image);
+                })
+                .collect(Collectors.toList());
+    }
 }
