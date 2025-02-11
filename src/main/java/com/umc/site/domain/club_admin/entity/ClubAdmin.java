@@ -1,6 +1,6 @@
 package com.umc.site.domain.club_admin.entity;
 
-import com.umc.site.domain.club_admin.enums.Role;
+import com.umc.site.domain.club_admin.entity.enums.Role;
 import com.umc.site.domain.role_history.entity.RoleHistory;
 import com.umc.site.global.common.BaseEntity;
 import jakarta.persistence.*;

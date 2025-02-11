@@ -1,6 +1,6 @@
 package com.umc.site.domain.club_admin.dto;
 
-import com.umc.site.domain.club_admin.enums.Role;
+import com.umc.site.domain.club_admin.entity.enums.Role;
 import com.umc.site.domain.image.dto.ImageResponseDTO;
 import com.umc.site.domain.role_history.dto.RoleHistoryResponseDTO;
 import lombok.AllArgsConstructor;
