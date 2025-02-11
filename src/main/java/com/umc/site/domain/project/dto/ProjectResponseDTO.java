@@ -18,8 +18,8 @@ public class ProjectResponseDTO {
         private Long projectId;
         private String title;
         private String pm;
-        private String front_end;
-        private String back_end;
+        private String frontEnd;
+        private String backEnd;
         private String design;
         private ServiceType serviceType;
         private ImageResponseDTO.ImageDTO image;

@@ -31,11 +31,11 @@ public class Project extends BaseEntity {
 
     // 프론트엔드 사람들
     @Column(length = 100)
-    private String front_end;
+    private String frontEnd;
 
     // 백엔드 사람들
     @Column(length = 100)
-    private String back_end;
+    private String backEnd;
 
     // 디자인 사람들
     @Column(length = 100)

@@ -14,8 +14,8 @@ public class ProjectConverter {
                 .projectId(project.getId())
                 .title(project.getTitle())
                 .pm(project.getPm())
-                .front_end(project.getFront_end())
-                .back_end(project.getBack_end())
+                .frontEnd(project.getFrontEnd())
+                .backEnd(project.getBackEnd())
                 .serviceType(project.getServiceType())
                 .image(ImageConverter.toImageDTO(image))
                 .build();
