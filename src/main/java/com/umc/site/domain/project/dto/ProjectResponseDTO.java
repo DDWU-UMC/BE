@@ -46,4 +46,16 @@ public class ProjectResponseDTO {
         private List<FeatureResponseDTO.FeatureDTO> features;
         private ImageResponseDTO.ImageDTO image;
     }
+
+    // n기 다른 프로젝트 보기 목록 조회
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class OtherProjectDTO {
+        private Long projectId;
+        private String title;
+        private ServiceType serviceType;
+        private ImageResponseDTO.ImageDTO image;
+    }
 }
