@@ -1,7 +1,7 @@
 package com.umc.site.domain.image.entity;
 
 import com.umc.site.domain.club_admin.entity.ClubAdmin;
-import com.umc.site.domain.image.enums.ImageableType;
+import com.umc.site.domain.project.entity.Project;
 import com.umc.site.global.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -26,12 +26,11 @@ public class Image extends BaseEntity {
     @Column(nullable = false, length = 300)
     private String fileUrl;
 
-    @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(20)")
-    private ImageableType imageableType;
-
-
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "club_admin_id", referencedColumnName = "id")
     private ClubAdmin clubAdmin;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "project_id", referencedColumnName = "id")
+    private Project project;
 }
