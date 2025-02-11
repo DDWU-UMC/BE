@@ -21,7 +21,7 @@ public class CohortController {
     // 기수 목록 조회
     @Operation(summary = "기수 목록 조회", description = "프로젝트를 불러오기 위한 기수 리스트를 불러옵니다.")
     @GetMapping("/projects/cohort")
-    public ApiResponse<List<CohortResponseDTO.CohortInfoDTO>> getProjectPreviews() {
+    public ApiResponse<List<CohortResponseDTO.CohortInfoDTO>> getCohorts() {
 
         return ApiResponse.onSuccess(cohortQueryService.getCohortList());
     }
