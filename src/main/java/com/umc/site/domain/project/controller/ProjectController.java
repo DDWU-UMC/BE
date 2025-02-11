@@ -27,4 +27,15 @@ public class ProjectController {
 
         return ApiResponse.onSuccess(projectQueryService.getProjectPreviewList(cohortId));
     }
+
+    // 프로젝트 상세 보기
+    @Operation(summary = "프로젝트 상세 정보 조회", description = "프로젝트 상세 정보를 불러옵니다.")
+    @GetMapping("/projects/{projectId}")
+    @Parameters({
+            @Parameter(name = "projectId", description = "프로젝트의 ID, pathVariable 입니다.")
+    })
+    public ApiResponse<ProjectResponseDTO.ProjectDetailDTO> getProjectDetails(@PathVariable(name = "projectId") Long projectId) {
+
+        return ApiResponse.onSuccess(projectQueryService.getProjectDetails(projectId));
+    }
 }
