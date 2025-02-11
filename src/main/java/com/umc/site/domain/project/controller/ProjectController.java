@@ -38,4 +38,15 @@ public class ProjectController {
 
         return ApiResponse.onSuccess(projectQueryService.getProjectDetails(projectId));
     }
+
+    // n기 다른 프로젝트 보기 목록 조회
+    @Operation(summary = "같은 기수 다른 프로젝트 목록 조회", description = "프로젝트 상세페이지 하단의 같은 기수의 다른 프로젝트를 랜덤으로 3개 불러옵니다.")
+    @GetMapping("/projects/{projectId}/others")
+    @Parameters({
+            @Parameter(name = "projectId", description = "상세페이지 조회한 프로젝트의 ID, pathVariable 입니다.")
+    })
+    public ApiResponse<List<ProjectResponseDTO.OtherProjectDTO>> getOtherProjects(@PathVariable(name = "projectId") Long projectId) {
+
+        return ApiResponse.onSuccess(projectQueryService.getOtherProjects(projectId));
+    }
 }
