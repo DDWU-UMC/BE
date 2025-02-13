@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class ProjectResponseDTO {
@@ -57,5 +58,15 @@ public class ProjectResponseDTO {
         private String title;
         private ServiceType serviceType;
         private ImageResponseDTO.ImageDTO image;
+    }
+
+    // 프로젝트 생성
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class CreateProjectResultDTO {
+        private Long projectId;
+        LocalDateTime createdAt;
     }
 }
