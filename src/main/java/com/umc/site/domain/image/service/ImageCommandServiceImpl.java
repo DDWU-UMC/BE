@@ -1,5 +1,6 @@
 package com.umc.site.domain.image.service;
 
+import com.umc.site.domain.club_admin.entity.ClubAdmin;
 import com.umc.site.domain.image.converter.ImageConverter;
 import com.umc.site.domain.image.entity.Image;
 import com.umc.site.domain.image.repository.ImageRepository;
@@ -25,8 +26,22 @@ public class ImageCommandServiceImpl implements ImageCommandService {
         String keyName = s3Manager.generateProjectKeyName();
         String fileUrl = s3Manager.uploadFile(keyName, file);
 
-        Image image = ImageConverter.toProjectImage(keyName, fileUrl);
+        Image image = ImageConverter.toImage(keyName, fileUrl);
         image.setProject(project);
+
+        imageRepository.save(image);
+    }
+
+    // 운영진 사진 생성
+    @Override
+    @Transactional
+    public void createClubAdminImage(MultipartFile file, ClubAdmin clubAdmin){
+
+        String keyName = s3Manager.generateProjectKeyName();
+        String fileUrl = s3Manager.uploadFile(keyName, file);
+
+        Image image = ImageConverter.toImage(keyName, fileUrl);
+        image.setClubAdmin(clubAdmin);
 
         imageRepository.save(image);
     }

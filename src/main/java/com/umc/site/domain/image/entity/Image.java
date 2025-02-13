@@ -26,6 +26,7 @@ public class Image extends BaseEntity {
     @Column(nullable = false, length = 300)
     private String fileUrl;
 
+    @Setter
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "club_admin_id", referencedColumnName = "id")
     private ClubAdmin clubAdmin;
