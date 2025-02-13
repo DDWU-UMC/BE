@@ -30,8 +30,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ProjectCommandServiceImpl implements ProjectCommandService{
 
-    private AmazonS3Manager s3Manager;
-
     private final ProjectRepository projectRepository;
     private final FeatureRepository featureRepository;
     private final CohortRepository cohortRepository;

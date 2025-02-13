@@ -20,10 +20,10 @@ public class ImageCommandServiceImpl implements ImageCommandService {
     // 프로젝트 사진 생성
     @Override
     @Transactional
-    public void createProjectImage(MultipartFile projectImage, Project project){
+    public void createProjectImage(MultipartFile file, Project project){
 
         String keyName = s3Manager.generateProjectKeyName();
-        String fileUrl = s3Manager.uploadFile(keyName, projectImage);
+        String fileUrl = s3Manager.uploadFile(keyName, file);
 
         Image image = ImageConverter.toProjectImage(keyName, fileUrl);
         image.setProject(project);
