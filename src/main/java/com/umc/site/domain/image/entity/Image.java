@@ -30,6 +30,7 @@ public class Image extends BaseEntity {
     @JoinColumn(name = "club_admin_id", referencedColumnName = "id")
     private ClubAdmin clubAdmin;
 
+    @Setter
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id", referencedColumnName = "id")
     private Project project;

@@ -1,9 +1,11 @@
 package com.umc.site.domain.project.converter;
 
+import com.umc.site.domain.cohort.entity.Cohort;
 import com.umc.site.domain.feature.converter.FeatureConverter;
 import com.umc.site.domain.feature.entity.Feature;
 import com.umc.site.domain.image.converter.ImageConverter;
 import com.umc.site.domain.image.entity.Image;
+import com.umc.site.domain.project.dto.ProjectRequestDTO;
 import com.umc.site.domain.project.dto.ProjectResponseDTO;
 import com.umc.site.domain.project.entity.Project;
 
@@ -53,6 +55,26 @@ public class ProjectConverter {
                 .title(project.getTitle())
                 .serviceType(project.getServiceType())
                 .image(ImageConverter.toImageDTO(image))
+                .build();
+    }
+
+    public static Project toProject(ProjectRequestDTO.CreateProjectDTO request, Cohort cohort) {
+        return Project.builder()
+                .title(request.getTitle())
+                .pm(request.getPm())
+                .frontEnd(request.getFrontEnd())
+                .backEnd(request.getBackEnd())
+                .design(request.getDesign())
+                .serviceType(request.getServiceType())
+                .description(request.getDescription())
+                .cohort(cohort)
+                .build();
+    }
+    
+    public static ProjectResponseDTO.CreateProjectResultDTO toCreateProjectResultDTO(Project project) {
+        return ProjectResponseDTO.CreateProjectResultDTO.builder()
+                .projectId(project.getId())
+                .createdAt(project.getCreatedAt())
                 .build();
     }
 }
