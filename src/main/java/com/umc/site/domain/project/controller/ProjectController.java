@@ -1,6 +1,7 @@
 package com.umc.site.domain.project.controller;
 
 import com.umc.site.domain.project.dto.ProjectResponseDTO;
+import com.umc.site.domain.project.enums.ServiceType;
 import com.umc.site.domain.project.service.ProjectQueryService;
 import com.umc.site.global.apiPayload.ApiResponse;
 import io.swagger.v3.oas.annotations.Operation;
@@ -17,15 +18,19 @@ import java.util.List;
 public class ProjectController {
     private final ProjectQueryService projectQueryService;
 
-    // 기수별 프로젝트 목록 조회
-    @Operation(summary = "기수별 프로젝트 목록 조회", description = " 기수별 프로젝트 리스트를 불러옵니다.")
+    // 프로젝트 목록 조회
+    @Operation(summary = "프로젝트 목록 조회", description = " 프로젝트 리스트를 불러옵니다.")
     @GetMapping("/projects")
     @Parameters({
-            @Parameter(name = "cohortId", description = "기수의 ID, query variable 입니다.")
+            @Parameter(name = "cohortId", description = "기수의 ID, query variable 입니다."),
+            @Parameter(name = "type", description = "프로젝트 플랫폼을 특정합니다, query variable 입니다."),
+            @Parameter(name = "keyword", description = "프로젝트 검색 키워드입니다, query variable 입니다.")
     })
-    public ApiResponse<List<ProjectResponseDTO.ProjectPreviewDTO>> getProjectPreviews(@RequestParam(name = "cohortId") Long cohortId) {
+    public ApiResponse<List<ProjectResponseDTO.ProjectPreviewDTO>> getProjectPreviews(@RequestParam(name = "cohortId", required = false) Long cohortId,
+                                                                                      @RequestParam(defaultValue = "ALL", required = false)ServiceType type,
+                                                                                      @RequestParam(required = false) String keyword) {
 
-        return ApiResponse.onSuccess(projectQueryService.getProjectPreviewList(cohortId));
+        return ApiResponse.onSuccess(projectQueryService.getProjectPreviewList(cohortId, type, keyword));
     }
 
     // 프로젝트 상세 보기
