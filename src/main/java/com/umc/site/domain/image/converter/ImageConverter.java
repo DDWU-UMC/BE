@@ -13,4 +13,13 @@ public class ImageConverter {
                 .fileName(image.getFileName())
                 .build();
     }
+
+    // 프로젝트 사진 생성
+    public static Image toProjectImage(String keyName, String fileUrl) {
+        return Image.builder()
+                .uuid(keyName.split("/")[1])
+                .fileName(keyName)
+                .fileUrl(fileUrl)
+                .build();
+    }
 }
