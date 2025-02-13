@@ -7,7 +7,9 @@ import com.umc.site.domain.image.repository.ImageRepository;
 import com.umc.site.domain.project.converter.ProjectConverter;
 import com.umc.site.domain.project.dto.ProjectResponseDTO;
 import com.umc.site.domain.project.entity.Project;
+import com.umc.site.domain.project.enums.ServiceType;
 import com.umc.site.domain.project.repository.ProjectRepository;
+import com.umc.site.domain.project.repository.ProjectRepositoryCustom;
 import com.umc.site.global.apiPayload.code.status.ErrorStatus;
 import com.umc.site.global.apiPayload.exception.handler.ProjectHandler;
 import lombok.RequiredArgsConstructor;
@@ -24,11 +26,13 @@ public class ProjectQueryServiceImpl implements ProjectQueryService{
     private final ProjectRepository projectRepository;
     private final ImageRepository imageRepository;
     private final FeatureRepository featureRepository;
+    private final ProjectRepositoryCustom projectRepositoryCustom;
 
     // 기수별 프로젝트 목록 조회
     @Override
-    public List<ProjectResponseDTO.ProjectPreviewDTO> getProjectPreviewList(Long cohortId){
-        List<Project> projects = projectRepository.findAllByCohortId(cohortId);
+    public List<ProjectResponseDTO.ProjectPreviewDTO> getProjectPreviewList(Long cohortId, ServiceType type, String keyword){
+
+        List<Project> projects = projectRepositoryCustom.getProjects(cohortId, type, keyword);
 
         return projects.stream()
                 .map(project -> {
