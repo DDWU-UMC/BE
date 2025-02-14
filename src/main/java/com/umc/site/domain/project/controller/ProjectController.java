@@ -69,4 +69,17 @@ public class ProjectController {
 
         return ApiResponse.onSuccess(projectCommandService.createProject(request, file));
     }
+
+    // 프로젝트 수정
+    @Operation(summary = "프로젝트 수정", description = "프로젝트를 수정합니다. 이미지는 같이 보내야 바뀌고 안보내면 이전 이미지로 유지됩니다.")
+    @PatchMapping(value =  "/projects/{projectId}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    @Parameters({
+            @Parameter(name = "projectId", description = "수정할 프로젝트의 ID, pathVariable 입니다.")
+    })
+    public ApiResponse<ProjectResponseDTO.UpdateProjectResultDTO> updateProject(@PathVariable(name = "projectId") Long projectId,
+                                                                                @RequestPart("request") @Valid ProjectRequestDTO.UpdateProjectDTO request,
+                                                                                @RequestPart(value = "file", required = false) MultipartFile file) {
+
+        return ApiResponse.onSuccess(projectCommandService.updateProject(projectId, request, file));
+    }
 }

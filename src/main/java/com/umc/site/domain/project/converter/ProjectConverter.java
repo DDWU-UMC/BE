@@ -77,4 +77,11 @@ public class ProjectConverter {
                 .createdAt(project.getCreatedAt())
                 .build();
     }
+
+    public static ProjectResponseDTO.UpdateProjectResultDTO toUpdateProjectResultDTO(Project project) {
+        return ProjectResponseDTO.UpdateProjectResultDTO.builder()
+                .projectId(project.getId())
+                .updatedAt(project.getUpdatedAt())
+                .build();
+    }
 }

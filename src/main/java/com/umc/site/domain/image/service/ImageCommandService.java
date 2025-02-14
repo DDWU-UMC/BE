@@ -9,6 +9,9 @@ public interface ImageCommandService {
     // 프로젝트 사진 생성
     void createProjectImage(MultipartFile file, Project project);
 
+    // 프로젝트 사진 삭제
+    void deleteProjectImage(Project project);
+
     // 운영진 사진 생성
     void createClubAdminImage(MultipartFile file, ClubAdmin clubAdmin);
 }

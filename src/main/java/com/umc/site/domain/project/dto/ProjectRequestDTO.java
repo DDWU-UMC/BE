@@ -1,6 +1,5 @@
 package com.umc.site.domain.project.dto;
 
-import com.umc.site.domain.cohort.entity.Cohort;
 import com.umc.site.domain.feature.dto.FeatureRequestDTO;
 import com.umc.site.domain.project.enums.ServiceType;
 import jakarta.validation.constraints.NotBlank;
@@ -51,5 +50,37 @@ public class ProjectRequestDTO {
         // 프로젝트 핵심 기능
         @Size(min = 1)
         private List<FeatureRequestDTO.CreatFeatureDTO> featureList;
+    }
+
+    // 프로젝트 수정
+    @Getter
+    public static class UpdateProjectDTO {
+
+        @NotBlank
+        private String title;   // 프로젝트명
+
+        @NotBlank
+        private String pm;  // 기획 사람들
+
+        @NotBlank
+        private String frontEnd;    // 프론트엔드 사람들
+
+        @NotBlank
+        private String backEnd; // 백엔드 사람들
+
+        @NotBlank
+        private String design;  // 디자인 사람들
+
+        @NotNull(message = "WEB/IOS/ANDROID")
+        private ServiceType serviceType;    // 서비스 유형
+
+        @NotBlank
+        private String description;  // 프로젝트 설명
+
+        @NotNull
+        private Long cohortId;  // 기수
+
+        @Size(min = 1)
+        private List<FeatureRequestDTO.CreatFeatureDTO> featureList;    // 프로젝트 핵심 기능
     }
 }

@@ -1,5 +1,6 @@
 package com.umc.site.domain.project.entity;
 
+import com.umc.site.domain.project.dto.ProjectRequestDTO;
 import com.umc.site.domain.project.enums.ServiceType;
 import com.umc.site.domain.cohort.entity.Cohort;
 import com.umc.site.domain.feature.entity.Feature;
@@ -58,4 +59,15 @@ public class Project extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cohort_id")
     private Cohort cohort;
+
+    public void updateProject(ProjectRequestDTO.UpdateProjectDTO request, Cohort cohort) {
+        this.title = request.getTitle();
+        this.pm = request.getPm();
+        this.frontEnd = request.getFrontEnd();
+        this.backEnd = request.getBackEnd();
+        this.design = request.getDesign();
+        this.serviceType = request.getServiceType();
+        this.description = request.getDescription();
+        this.cohort = cohort;
+    }
 }

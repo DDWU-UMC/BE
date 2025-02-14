@@ -32,7 +32,7 @@ public class Image extends BaseEntity {
     private ClubAdmin clubAdmin;
 
     @Setter
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id", referencedColumnName = "id")
     private Project project;
 }

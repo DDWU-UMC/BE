@@ -1,6 +1,7 @@
 package com.umc.site.global.manager;
 
 import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.umc.site.global.config.AmazonConfig;
@@ -32,6 +33,10 @@ public class AmazonS3Manager{
         }
 
         return amazonS3.getUrl(amazonConfig.getBucket(), keyName).toString();
+    }
+
+    public void deleteFile(String keyName) {
+        amazonS3.deleteObject(new DeleteObjectRequest(amazonConfig.getBucket(), keyName));
     }
 
     public String generateProjectKeyName() {
