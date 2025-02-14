@@ -6,6 +6,7 @@ import com.umc.site.domain.cohort.service.CohortCommandService;
 import com.umc.site.domain.cohort.service.CohortQueryService;
 import com.umc.site.global.apiPayload.ApiResponse;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -34,5 +35,16 @@ public class CohortController {
     public ApiResponse<CohortResponseDTO.CreateCohortResultDTO> createCohort(@RequestBody @Valid CohortRequestDTO.CreateCohortDTO request) {
 
         return ApiResponse.onSuccess(cohortCommandService.createCohort(request));
+    }
+
+    // 기수 수정
+    @Operation(summary = "기수 수정", description = "프로젝트 기존 기수를 수정합니다.")
+    @PatchMapping("/projects/cohort/{cohortId}")
+    @Parameters({
+            @Parameter(name = "cohortId", description = "기수의 ID, cohortId 입니다.")
+    })
+    public ApiResponse<CohortResponseDTO.UpdateCohortResultDTO> updateCohort(@PathVariable(name = "cohortId") Long cohortId, @RequestBody @Valid CohortRequestDTO.UpdateCohortDTO request) {
+
+        return ApiResponse.onSuccess(cohortCommandService.updateCohort(cohortId, request));
     }
 }
