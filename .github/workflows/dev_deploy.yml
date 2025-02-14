@@ -19,7 +19,7 @@ jobs:
 
       - name: Make application.yml
         run: |
-          cd ./src/main/resources
+          mkdir -p src/main/resources
           echo "${{ secrets.APPLICATION_YML }}" > ./application.yml
         shell: bash
 
