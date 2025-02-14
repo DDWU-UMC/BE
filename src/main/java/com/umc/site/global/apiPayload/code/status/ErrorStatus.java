@@ -14,6 +14,9 @@ public enum ErrorStatus implements BaseErrorCode {
     _BAD_REQUEST(HttpStatus.BAD_REQUEST,"COMMON400","잘못된 요청입니다."),
     _UNAUTHORIZED(HttpStatus.UNAUTHORIZED,"COMMON401","인증이 필요합니다."),
     _FORBIDDEN(HttpStatus.FORBIDDEN, "COMMON403", "금지된 요청입니다."),
+
+    // 파트 관련 에러
+    PART_NOT_RECRUITNIG(HttpStatus.BAD_REQUEST, "PART4001", "모집 대상이 아닌 파트입니다."),
     
     // 기수 관련 에러
     COHORT_NOT_FOUND(HttpStatus.NOT_FOUND, "COHORT4001", "존재하지 않는 기수입니다."),
