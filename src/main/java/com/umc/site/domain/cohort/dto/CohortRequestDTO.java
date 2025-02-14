@@ -11,4 +11,11 @@ public class CohortRequestDTO {
         @NotBlank
         private String name;
     }
+
+    // 기수 수정
+    @Getter
+    public static class UpdateCohortDTO {
+        @NotBlank
+        private String name;
+    }
 }

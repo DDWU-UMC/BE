@@ -20,6 +20,7 @@ public class Cohort extends BaseEntity {
     private Long id;
 
     // 기수명 (ex. 7기)
+    @Setter
     @Column(nullable = false, length = 20)
     private String name;
 

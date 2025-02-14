@@ -7,4 +7,7 @@ public interface CohortCommandService {
 
     // 기수 추가
     CohortResponseDTO.CreateCohortResultDTO createCohort(CohortRequestDTO.CreateCohortDTO request);
+
+    // 기수 수정
+    CohortResponseDTO.UpdateCohortResultDTO updateCohort(Long cohortId, CohortRequestDTO.UpdateCohortDTO request);
 }
