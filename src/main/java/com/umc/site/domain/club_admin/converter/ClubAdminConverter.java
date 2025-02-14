@@ -1,5 +1,6 @@
 package com.umc.site.domain.club_admin.converter;
 
+import com.umc.site.domain.club_admin.dto.ClubAdminRequestDTO;
 import com.umc.site.domain.club_admin.dto.ClubAdminResponseDTO;
 import com.umc.site.domain.club_admin.entity.ClubAdmin;
 import com.umc.site.domain.image.converter.ImageConverter;
@@ -11,6 +12,7 @@ import java.util.List;
 
 public class ClubAdminConverter {
 
+    // 운영진 리스트 조회
     public static ClubAdminResponseDTO.ClubAdminInfoDTO toClubAdminInfoDTO(ClubAdmin clubAdmin, Image image, List<RoleHistory> roleHistories) {
 
         return ClubAdminResponseDTO.ClubAdminInfoDTO.builder()
@@ -23,6 +25,24 @@ public class ClubAdminConverter {
                 .roleHistories(roleHistories.stream()
                         .map(RoleHistoryConverter::toRoleHistoryDTO)
                         .toList())
+                .build();
+    }
+
+    // 운영진 생성
+    public static ClubAdmin toClubAdmin(ClubAdminRequestDTO.CreateClubAdminDTO request) {
+
+        return ClubAdmin.builder()
+                .name(request.getName())
+                .nickname(request.getNickname())
+                .role(request.getRole())
+                .commitment(request.getCommitment())
+                .build();
+    }
+
+    public static ClubAdminResponseDTO.CreateClubAdminResultDTO toCreateClubAdminResultDTO(ClubAdmin clubAdmin) {
+        return ClubAdminResponseDTO.CreateClubAdminResultDTO.builder()
+                .clubAdminId(clubAdmin.getId())
+                .createdAt(clubAdmin.getCreatedAt())
                 .build();
     }
 }

@@ -8,10 +8,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class ClubAdminResponseDTO {
 
+    // 운영진 리스트 조회
     @Builder
     @Getter
     @NoArgsConstructor
@@ -24,5 +26,15 @@ public class ClubAdminResponseDTO {
         Role role;
         ImageResponseDTO.ImageDTO image;
         List<RoleHistoryResponseDTO.RoleHistoryDTO> roleHistories;
+    }
+
+    // 운영진 생성 응답
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class CreateClubAdminResultDTO {
+        private Long clubAdminId;
+        LocalDateTime createdAt;
     }
 }

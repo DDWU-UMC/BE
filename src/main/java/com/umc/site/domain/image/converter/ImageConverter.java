@@ -14,8 +14,8 @@ public class ImageConverter {
                 .build();
     }
 
-    // 프로젝트 사진 생성
-    public static Image toProjectImage(String keyName, String fileUrl) {
+    // 프로젝트 or 운영진 사진 생성
+    public static Image toImage(String keyName, String fileUrl) {
         return Image.builder()
                 .uuid(keyName.split("/")[1])
                 .fileName(keyName)
