@@ -28,6 +28,17 @@ public class CohortResponseDTO {
     public static class CreateCohortResultDTO {
         private Long cohortId;
         private String name;
-        LocalDateTime createdAt;
+        private LocalDateTime createdAt;
+    }
+
+    // 기수 수정
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class UpdateCohortResultDTO {
+        private Long cohortId;
+        private String name;
+        private LocalDateTime updatedAt;
     }
 }
