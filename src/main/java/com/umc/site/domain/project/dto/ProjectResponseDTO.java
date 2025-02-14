@@ -67,6 +67,16 @@ public class ProjectResponseDTO {
     @AllArgsConstructor
     public static class CreateProjectResultDTO {
         private Long projectId;
-        LocalDateTime createdAt;
+        private LocalDateTime createdAt;
+    }
+
+    // 프로젝트 수정
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class UpdateProjectResultDTO {
+        private Long projectId;
+        private LocalDateTime updatedAt;
     }
 }
