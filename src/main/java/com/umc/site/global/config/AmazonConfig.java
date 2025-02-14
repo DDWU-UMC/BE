@@ -34,6 +34,10 @@ public class AmazonConfig {
     @Value("${cloud.aws.s3.path.projects}")
     private String projectPath;
 
+    // 운영진 사진 경로
+    @Value("${cloud.aws.s3.path.club-admins}")
+    private String clubAdminPath;
+
     @PostConstruct
     public void init() {
         this.awsCredentials = new BasicAWSCredentials(accessKey, secretKey);
