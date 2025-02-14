@@ -37,4 +37,8 @@ public class AmazonS3Manager{
     public String generateProjectKeyName() {
         return amazonConfig.getProjectPath() + '/' + UUID.randomUUID().toString();
     }
+
+    public String generateClubAdminKeyName() {
+        return amazonConfig.getClubAdminPath() + '/' + UUID.randomUUID().toString();
+    }
 }
