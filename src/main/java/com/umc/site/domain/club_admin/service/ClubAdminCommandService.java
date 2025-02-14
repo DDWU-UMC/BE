@@ -8,4 +8,7 @@ public interface ClubAdminCommandService {
 
     // 운영진 생성
     ClubAdminResponseDTO.CreateClubAdminResultDTO createClubAdmin(ClubAdminRequestDTO.CreateClubAdminDTO request, MultipartFile file);
+
+    // 운영진 수정
+    ClubAdminResponseDTO.UpdateClubAdminResultDTO updateClubAdmin(Long clubAdminId, ClubAdminRequestDTO.UpdateClubAdminDTO request, MultipartFile file);
 }

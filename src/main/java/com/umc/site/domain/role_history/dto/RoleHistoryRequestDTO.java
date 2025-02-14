@@ -12,4 +12,13 @@ public class RoleHistoryRequestDTO {
         @NotBlank
         private String content;
     }
+
+    // 활동 이력 수정
+    @Getter
+    public static class UpdateRoleHistoryDTO {
+
+        private Long roleHistoryId;
+
+        private String content;
+    }
 }

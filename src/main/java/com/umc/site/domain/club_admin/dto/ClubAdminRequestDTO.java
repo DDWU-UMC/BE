@@ -38,4 +38,25 @@ public class ClubAdminRequestDTO {
         @Size(min = 1)
         private List<RoleHistoryRequestDTO.CreateRoleHistoryDTO> roleHistoryList;
     }
+
+    @Getter
+    public static class UpdateClubAdminDTO {
+
+        // 이름
+        private String name;
+
+        // 닉네임
+        private String nickname;
+
+        // 한 줄 다짐
+        private String commitment;
+
+        // 역할
+        private Role role;
+
+        // 활동 이력
+        private List<RoleHistoryRequestDTO.UpdateRoleHistoryDTO> roleHistories;
+    }
+
+
 }
