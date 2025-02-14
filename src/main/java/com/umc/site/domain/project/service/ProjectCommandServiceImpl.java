@@ -66,7 +66,7 @@ public class ProjectCommandServiceImpl implements ProjectCommandService{
     @Transactional
     public ProjectResponseDTO.UpdateProjectResultDTO updateProject(Long projectId, ProjectRequestDTO.UpdateProjectDTO request, MultipartFile file){
 
-        // 프로젝트 기수 찾기
+        // 프로젝트 찾기
         Project existProject = projectRepository.findById(projectId)
                 .orElseThrow(() -> new ProjectHandler(ErrorStatus.PROJECT_NOT_FOUND));
 
