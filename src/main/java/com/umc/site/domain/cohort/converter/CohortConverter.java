@@ -32,4 +32,14 @@ public class CohortConverter {
                 .createdAt(cohort.getCreatedAt())
                 .build();
     }
+
+    // 기수 수정
+    public static CohortResponseDTO.UpdateCohortResultDTO toUpdateCohortResultDTO(Cohort cohort){
+
+        return CohortResponseDTO.UpdateCohortResultDTO.builder()
+                .cohortId(cohort.getId())
+                .name(cohort.getName())
+                .updatedAt(cohort.getUpdatedAt())
+                .build();
+    }
 }
