@@ -60,4 +60,37 @@ public class ProjectCommandServiceImpl implements ProjectCommandService{
 
         return ProjectConverter.toCreateProjectResultDTO(savedProject);
     }
+
+    // 프로젝트 수정
+    @Override
+    @Transactional
+    public ProjectResponseDTO.UpdateProjectResultDTO updateProject(Long projectId, ProjectRequestDTO.UpdateProjectDTO request, MultipartFile file){
+
+        // 프로젝트 기수 찾기
+        Project existProject = projectRepository.findById(projectId)
+                .orElseThrow(() -> new ProjectHandler(ErrorStatus.PROJECT_NOT_FOUND));
+
+        // 프로젝트 기수 찾기
+        Cohort cohort = cohortRepository.findById(request.getCohortId())
+                .orElseThrow(() -> new ProjectHandler(ErrorStatus.COHORT_NOT_FOUND));
+
+        // 프로젝트 수정
+        existProject.updateProject(request, cohort);
+
+        // 새로운 핵심 기능 생성
+        featureRepository.deleteAllByProjectId(projectId);  // 기존 핵심 기능 삭제
+        List<Feature> features = request.getFeatureList().stream()
+                .map(featureDTO -> FeatureConverter.toFeature(featureDTO, existProject))
+                .collect(Collectors.toList());
+
+        featureRepository.saveAll(features);
+
+        // 새로운 이미지 저장 (이미지도 보냈을 때)
+        if (file != null && !file.isEmpty()) {
+            imageCommandService.deleteProjectImage(existProject);   // 기존 이미지 삭제
+            imageCommandService.createProjectImage(file, existProject);
+        }
+
+        return ProjectConverter.toUpdateProjectResultDTO(existProject);
+    }
 }
