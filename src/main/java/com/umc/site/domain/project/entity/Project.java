@@ -51,6 +51,10 @@ public class Project extends BaseEntity {
     @Column(nullable = false, length = 200)
     private String description;
 
+    // 프로젝트 한 줄 소개
+    @Column(nullable = false, length = 200)
+    private String introduction;
+
     // 프로젝트 핵심 기능
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     private List<Feature> features = new ArrayList<>();
