@@ -13,14 +13,15 @@ import java.util.List;
 public class ClubAdminConverter {
 
     // 운영진 리스트 조회
-    public static ClubAdminResponseDTO.ClubAdminInfoDTO toClubAdminInfoDTO(ClubAdmin clubAdmin, Image image, List<RoleHistory> roleHistories) {
+    public static ClubAdminResponseDTO.ClubAdminInfoDTO toClubAdminInfoDTO(ClubAdmin clubAdmin, Image image,
+                                                                           List<RoleHistory> roleHistories, String role) {
 
         return ClubAdminResponseDTO.ClubAdminInfoDTO.builder()
                 .clubAdminId(clubAdmin.getId())
                 .name(clubAdmin.getName())
                 .nickname(clubAdmin.getNickname())
                 .commitment(clubAdmin.getCommitment())
-                .role(clubAdmin.getRole())
+                .role(role)
                 .image(ImageConverter.toImageDTO(image))
                 .roleHistories(roleHistories.stream()
                         .map(RoleHistoryConverter::toRoleHistoryDTO)

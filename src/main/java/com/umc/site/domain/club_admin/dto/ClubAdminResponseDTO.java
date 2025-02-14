@@ -23,7 +23,7 @@ public class ClubAdminResponseDTO {
         String name;
         String nickname;
         String commitment;
-        Role role;
+        String role;
         ImageResponseDTO.ImageDTO image;
         List<RoleHistoryResponseDTO.RoleHistoryDTO> roleHistories;
     }
