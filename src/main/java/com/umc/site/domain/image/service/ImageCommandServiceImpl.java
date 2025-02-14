@@ -32,6 +32,19 @@ public class ImageCommandServiceImpl implements ImageCommandService {
         imageRepository.save(image);
     }
 
+    // 프로젝트 사진 삭제
+    @Override
+    @Transactional
+    public void deleteProjectImage(Project project){
+
+        Image image = imageRepository.findByProject(project);
+
+        s3Manager.deleteFile(image.getFileName());
+
+        imageRepository.delete(image);
+        imageRepository.flush();
+    }
+
     // 운영진 사진 생성
     @Override
     @Transactional
