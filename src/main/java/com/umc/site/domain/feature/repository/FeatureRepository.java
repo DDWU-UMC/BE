@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface FeatureRepository extends JpaRepository<Feature, Long> {
     List<Feature> findAllByProject(Project project);
+
+    void deleteAllByProjectId(Long projectId);
 }
