@@ -58,16 +58,4 @@ public class ImageCommandServiceImpl implements ImageCommandService {
 
         imageRepository.save(image);
     }
-
-    // 운영진 사진 수정
-//    @Override
-//    @Transactional
-//    public void updateClubAdminImage(MultipartFile file, ClubAdmin clubAdmin, Image image) {
-//
-//        String keyName = s3Manager.generateProjectKeyName();
-//        String fileUrl = s3Manager.uploadFile(keyName, file);
-//
-//        Image
-//
-//    }
 }
