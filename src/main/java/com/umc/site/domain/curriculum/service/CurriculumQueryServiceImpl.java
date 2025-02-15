@@ -7,6 +7,8 @@ import com.umc.site.domain.curriculum.repository.CurriculumRepository;
 import com.umc.site.domain.part.entity.Part;
 import com.umc.site.domain.part.entity.enums.PartType;
 import com.umc.site.domain.part.repository.PartRepository;
+import com.umc.site.global.apiPayload.code.status.ErrorStatus;
+import com.umc.site.global.apiPayload.exception.handler.PartHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +27,9 @@ public class CurriculumQueryServiceImpl implements CurriculumQueryService {
     public List<CurriculumResponseDTO.CurriculumInfoDTO> getCurriculumList(PartType partType) {
 
         Part part = partRepository.findByPartType(partType);
+        if (!part.getIsRecruiting()) {
+            throw new PartHandler(ErrorStatus.PART_NOT_RECRUITNIG);
+        }
 
         List<Curriculum> curriculums = curriculumRepository.findAllByPart(part);
 

@@ -17,6 +17,7 @@ public enum ErrorStatus implements BaseErrorCode {
 
     // 파트 관련 에러
     PART_NOT_RECRUITNIG(HttpStatus.BAD_REQUEST, "PART4001", "모집 대상이 아닌 파트입니다."),
+    INVALID_PART(HttpStatus.BAD_REQUEST, "PART4002", "올바르지 않은 파트입니다."),
   
     // 이미지 관련 에러
     IMAGE_NOT_FOUND(HttpStatus.NOT_FOUND, "IMAGE_NOT4001", "존재하지 않는 운영진 이미지입니다."),
@@ -31,7 +32,8 @@ public enum ErrorStatus implements BaseErrorCode {
     COHORT_NOT_FOUND(HttpStatus.NOT_FOUND, "COHORT4001", "존재하지 않는 기수입니다."),
 
     // 프로젝트 관련 에러
-    PROJECT_NOT_FOUND(HttpStatus.NOT_FOUND, "PROJECT4001", "존재하지 않는 프로젝트입니다.");
+    PROJECT_NOT_FOUND(HttpStatus.NOT_FOUND, "PROJECT4001", "존재하지 않는 프로젝트입니다."),
+    INVALID_SERVICE_TYPE(HttpStatus.BAD_REQUEST, "PROJECT4002", "올바르지 않은 서비스 타입입니다..");
 
 
     private final HttpStatus httpStatus;
