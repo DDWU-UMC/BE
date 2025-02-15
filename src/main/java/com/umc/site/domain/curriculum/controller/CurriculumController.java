@@ -31,8 +31,13 @@ public class CurriculumController {
     @Parameters ({
             @Parameter(name = "partType", description = "커리큘럼의 파트를 특정합니다, query variable 입니다.")
     })
-    public ApiResponse<List<CurriculumResponseDTO.CurriculumInfoDTO>> getCurriculums(@RequestParam(defaultValue = "PLAN") @ValidPart PartType partType) {
+    public ApiResponse<List<CurriculumResponseDTO.CurriculumInfoDTO>> getCurriculums(
+            @RequestParam(defaultValue = "plan") String partType) {
 
-        return ApiResponse.onSuccess(curriculumQueryService.getCurriculumList(partType));
+        return ApiResponse.onSuccess(
+                curriculumQueryService.getCurriculumList(
+                        PartType.fromLowerCasePartType(partType)
+                )
+        );
     }
 }
