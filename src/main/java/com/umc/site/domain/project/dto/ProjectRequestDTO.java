@@ -43,6 +43,10 @@ public class ProjectRequestDTO {
         @NotBlank
         private String description;
 
+        // 프로젝트 한줄 소개
+        @NotBlank
+        private String introduction;
+
         // 기수
         @NotNull
         private Long cohortId;
@@ -76,6 +80,9 @@ public class ProjectRequestDTO {
 
         @NotBlank
         private String description;  // 프로젝트 설명
+
+        @NotBlank
+        private String introduction;    // 프로젝트 한줄 소개
 
         @NotNull
         private Long cohortId;  // 기수

@@ -68,6 +68,7 @@ public class ProjectConverter {
                 .design(request.getDesign())
                 .serviceType(request.getServiceType())
                 .description(request.getDescription())
+                .introduction(request.getIntroduction())
                 .cohort(cohort)
                 .build();
     }

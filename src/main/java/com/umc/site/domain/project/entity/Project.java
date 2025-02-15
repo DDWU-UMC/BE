@@ -72,6 +72,7 @@ public class Project extends BaseEntity {
         this.design = request.getDesign();
         this.serviceType = request.getServiceType();
         this.description = request.getDescription();
+        this.introduction = request.getIntroduction();
         this.cohort = cohort;
     }
 }
