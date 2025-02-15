@@ -15,9 +15,9 @@ public enum ErrorStatus implements BaseErrorCode {
     _UNAUTHORIZED(HttpStatus.UNAUTHORIZED,"COMMON401","인증이 필요합니다."),
     _FORBIDDEN(HttpStatus.FORBIDDEN, "COMMON403", "금지된 요청입니다."),
 
-
     // 파트 관련 에러
     PART_NOT_RECRUITNIG(HttpStatus.BAD_REQUEST, "PART4001", "모집 대상이 아닌 파트입니다."),
+  
     // 이미지 관련 에러
     IMAGE_NOT_FOUND(HttpStatus.NOT_FOUND, "IMAGE_NOT4001", "존재하지 않는 운영진 이미지입니다."),
 

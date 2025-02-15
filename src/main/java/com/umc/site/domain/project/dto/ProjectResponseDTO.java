@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ProjectResponseDTO {
 
-    // 기수별 프로젝트 목록 조회
+    // 프로젝트 목록 조회
     @Builder
     @Getter
     @NoArgsConstructor
@@ -44,6 +44,7 @@ public class ProjectResponseDTO {
         private String backEnd;
         private String design;
         private String description;
+        private String introduction;
         private List<FeatureResponseDTO.FeatureDTO> features;
         private ImageResponseDTO.ImageDTO image;
     }

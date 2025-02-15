@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ProjectConverter {
 
-    // 기수별 프로젝트 목록 조회
+    // 프로젝트 목록 조회
     public static ProjectResponseDTO.ProjectPreviewDTO toProjectPreviewDTO(Project project, Image image) {
 
         return ProjectResponseDTO.ProjectPreviewDTO.builder()
@@ -40,6 +40,7 @@ public class ProjectConverter {
                 .backEnd(project.getBackEnd())
                 .design(project.getDesign())
                 .description(project.getDescription())
+                .introduction(project.getIntroduction())
                 .cohort(project.getCohort().getName())
                 .features(features.stream()
                         .map(FeatureConverter::toFeatureDTO)
@@ -67,6 +68,7 @@ public class ProjectConverter {
                 .design(request.getDesign())
                 .serviceType(request.getServiceType())
                 .description(request.getDescription())
+                .introduction(request.getIntroduction())
                 .cohort(cohort)
                 .build();
     }
