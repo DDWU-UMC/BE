@@ -74,15 +74,19 @@ public class ClubAdminCommandServiceImpl implements ClubAdminCommandService{
             clubAdmin.setCommitment(request.getCommitment());
         }
         if (request.getRole() != null) {
-            clubAdmin.setCommitment(request.getCommitment());
+            clubAdmin.setRole(request.getRole());
         }
 
-        updateClubAdminImage(clubAdmin, file);
+        if (file != null && !file.isEmpty()) {
+            updateClubAdminImage(clubAdmin, file);
+        }
         updateClubAdminRoleHistory(request);
 
         ClubAdmin updatedClubAdmin = clubAdminRepository.save(clubAdmin);
 
-        Image image = imageRepository.findByClubAdmin(updatedClubAdmin).get();
+        Image image = imageRepository.findByClubAdmin(updatedClubAdmin)
+                .orElseThrow(() -> new ImageHandler(ErrorStatus.IMAGE_NOT_FOUND));
+
         List<RoleHistory> roleHistories = roleHistoryRepository.findAllByClubAdmin(updatedClubAdmin);
 
         return ClubAdminConverter.toUpdateClubAdminResultDTO(updatedClubAdmin, image, roleHistories);
@@ -112,7 +116,7 @@ public class ClubAdminCommandServiceImpl implements ClubAdminCommandService{
                     .orElseThrow(() -> new ImageHandler(ErrorStatus.IMAGE_NOT_FOUND));
 
             // S3에서 기존 운영진 사진 삭제
-            s3Manager.deleteFile(existingImage.getUuid());
+            s3Manager.deleteFile(existingImage.getFileName());
 
             // DB에서 기존 운영진 사진 삭제
             imageRepository.delete(existingImage);

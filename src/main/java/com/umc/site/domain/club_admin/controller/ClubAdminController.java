@@ -43,15 +43,14 @@ public class ClubAdminController {
 
     // 운영진 수정
     @Operation(summary = "운영진 수정", description = "운영진을 수정합니다.")
-    @Parameters ({
+    @Parameters({
             @Parameter(name = "clubAdminId", description = "운영진의 ID, path variable 입니다.")
     })
     @PatchMapping(value = "/club-admins/{clubAdminId}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ApiResponse<ClubAdminResponseDTO.UpdateClubAdminResultDTO> updateClubAdmin(@PathVariable Long clubAdminId,
                                                                                       @RequestPart("request") @Valid ClubAdminRequestDTO.UpdateClubAdminDTO request,
-                                                                                      @RequestPart("file") MultipartFile file) {
+                                                                                      @RequestPart(value = "file", required = false) MultipartFile file) {
 
         return ApiResponse.onSuccess(clubAdminCommandService.updateClubAdmin(clubAdminId, request, file));
     }
-
 }

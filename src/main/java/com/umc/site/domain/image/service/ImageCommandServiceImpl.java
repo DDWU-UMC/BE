@@ -50,7 +50,7 @@ public class ImageCommandServiceImpl implements ImageCommandService {
     @Transactional
     public void createClubAdminImage(MultipartFile file, ClubAdmin clubAdmin) {
 
-        String keyName = s3Manager.generateProjectKeyName();
+        String keyName = s3Manager.generateClubAdminKeyName();
         String fileUrl = s3Manager.uploadFile(keyName, file);
 
         Image image = ImageConverter.toImage(keyName, fileUrl);

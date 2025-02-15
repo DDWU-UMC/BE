@@ -34,7 +34,8 @@ public class Image extends BaseEntity {
     private String fileUrl;
 
     @Setter
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "club_admin_id", referencedColumnName = "id")
     private ClubAdmin clubAdmin;
 
