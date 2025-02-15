@@ -112,15 +112,8 @@ public class ClubAdminCommandServiceImpl implements ClubAdminCommandService{
     private void updateClubAdminImage(ClubAdmin clubAdmin, MultipartFile file) {
 
         if (file != null && !file.isEmpty()) {
-            Image existingImage = imageRepository.findByClubAdmin(clubAdmin)
-                    .orElseThrow(() -> new ImageHandler(ErrorStatus.IMAGE_NOT_FOUND));
-
-            // S3에서 기존 운영진 사진 삭제
-            s3Manager.deleteFile(existingImage.getFileName());
-
-            // DB에서 기존 운영진 사진 삭제
-            imageRepository.delete(existingImage);
-            imageRepository.flush();
+            // 이미지 삭제
+            imageCommandService.deleteClubAdminImage(clubAdmin);
 
             // DB에 새로 생성
             imageCommandService.createClubAdminImage(file, clubAdmin);

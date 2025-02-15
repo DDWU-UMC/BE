@@ -5,6 +5,8 @@ import com.umc.site.domain.image.converter.ImageConverter;
 import com.umc.site.domain.image.entity.Image;
 import com.umc.site.domain.image.repository.ImageRepository;
 import com.umc.site.domain.project.entity.Project;
+import com.umc.site.global.apiPayload.code.status.ErrorStatus;
+import com.umc.site.global.apiPayload.exception.handler.ImageHandler;
 import com.umc.site.global.manager.AmazonS3Manager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -57,5 +59,22 @@ public class ImageCommandServiceImpl implements ImageCommandService {
         image.setClubAdmin(clubAdmin);
 
         imageRepository.save(image);
+    }
+
+    // 운영진 사진 삭제
+    // 프로젝트 사진 삭제
+    @Override
+    @Transactional
+    public void deleteClubAdminImage(ClubAdmin clubAdmin) {
+
+        Image existingImage = imageRepository.findByClubAdmin(clubAdmin)
+                .orElseThrow(() -> new ImageHandler(ErrorStatus.IMAGE_NOT_FOUND));
+
+        // S3에서 기존 운영진 사진 삭제
+        s3Manager.deleteFile(existingImage.getFileName());
+
+        // DB에서 기존 운영진 사진 삭제
+        imageRepository.delete(existingImage);
+        imageRepository.flush();
     }
 }
