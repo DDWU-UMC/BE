@@ -37,4 +37,20 @@ public class ClubAdminResponseDTO {
         private Long clubAdminId;
         LocalDateTime createdAt;
     }
+
+    // 운영진 수정 응답
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class UpdateClubAdminResultDTO {
+        Long clubAdminId;
+        String name;
+        String nickname;
+        String commitment;
+        Role role;
+        ImageResponseDTO.ImageDTO image;
+        List<RoleHistoryResponseDTO.RoleHistoryDTO> roleHistories;
+        LocalDateTime updatedAt;
+    }
 }

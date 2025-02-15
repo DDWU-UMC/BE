@@ -14,4 +14,7 @@ public interface ImageCommandService {
 
     // 운영진 사진 생성
     void createClubAdminImage(MultipartFile file, ClubAdmin clubAdmin);
+
+    // 운영진 사진 삭제
+    void deleteClubAdminImage(ClubAdmin clubAdmin);
 }

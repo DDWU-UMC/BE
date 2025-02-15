@@ -8,11 +8,14 @@ import com.umc.site.domain.image.entity.Image;
 import com.umc.site.domain.image.repository.ImageRepository;
 import com.umc.site.domain.role_history.entity.RoleHistory;
 import com.umc.site.domain.role_history.repository.RoleHistoryRepository;
+import com.umc.site.global.apiPayload.code.status.ErrorStatus;
+import com.umc.site.global.apiPayload.exception.handler.ImageHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -44,7 +47,9 @@ public class ClubAdminQueryServiceImpl implements ClubAdminQueryService{
                         case IOS_LEADER -> "IOS 파트장";
                     };
 
-                    Image image = imageRepository.findByClubAdmin(clubAdmin);
+                    Image image = imageRepository.findByClubAdmin(clubAdmin)
+                            .orElseThrow(() -> new ImageHandler(ErrorStatus.IMAGE_NOT_FOUND));
+
                     List<RoleHistory> roleHistories = roleHistoryRepository.findAllByClubAdmin(clubAdmin);
 
                     return ClubAdminConverter.toClubAdminInfoDTO(clubAdmin, image, roleHistories, role);

@@ -17,7 +17,16 @@ public enum ErrorStatus implements BaseErrorCode {
 
     // 파트 관련 에러
     PART_NOT_RECRUITNIG(HttpStatus.BAD_REQUEST, "PART4001", "모집 대상이 아닌 파트입니다."),
-    
+  
+    // 이미지 관련 에러
+    IMAGE_NOT_FOUND(HttpStatus.NOT_FOUND, "IMAGE_NOT4001", "존재하지 않는 운영진 이미지입니다."),
+
+    // 운영진 관련 에러
+    CLUB_ADMIN_NOT_FOUND(HttpStatus.NOT_FOUND, "CLUB_ADMIN4001", "존재하지 않는 운영진입니다."),
+
+    // 활동 이력 관련 에러
+    ROLE_HISTORY_NOT_FOUND(HttpStatus.NOT_FOUND, "ROLE_HISTORY4001", "존재하지 않는 활동 이력입니다."),
+
     // 기수 관련 에러
     COHORT_NOT_FOUND(HttpStatus.NOT_FOUND, "COHORT4001", "존재하지 않는 기수입니다."),
 
