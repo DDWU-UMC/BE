@@ -82,4 +82,17 @@ public class ProjectController {
 
         return ApiResponse.onSuccess(projectCommandService.updateProject(projectId, request, file));
     }
+
+    // 프로젝트 삭제
+    @Operation(summary = "프로젝트 삭제", description = "프로젝트를 삭제합니다.")
+    @DeleteMapping( "/projects/{projectId}")
+    @Parameters({
+            @Parameter(name = "projectId", description = "삭제할 프로젝트의 ID, pathVariable 입니다.")
+    })
+    public ApiResponse<Void> deleteProject(@PathVariable(name = "projectId") Long projectId) {
+
+        projectCommandService.deleteProject(projectId);
+
+        return ApiResponse.onSuccess(null);
+    }
 }
