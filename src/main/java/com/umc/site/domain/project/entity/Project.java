@@ -48,7 +48,7 @@ public class Project extends BaseEntity {
     private ServiceType serviceType;
 
     // 프로젝트 설명
-    @Column(length = 200)
+    @Column(length = 500)
     private String description;
 
     // 프로젝트 한 줄 소개
