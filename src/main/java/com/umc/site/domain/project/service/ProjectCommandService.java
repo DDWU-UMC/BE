@@ -12,4 +12,8 @@ public interface ProjectCommandService {
 
     // 프로젝트 수정
     ProjectResponseDTO.UpdateProjectResultDTO updateProject(Long projectId, ProjectRequestDTO.UpdateProjectDTO request, MultipartFile file);
+
+
+    // 프로젝트 삭제
+    void deleteProject(Long projectId);
 }

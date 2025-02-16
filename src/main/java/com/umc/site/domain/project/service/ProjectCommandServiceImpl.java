@@ -93,4 +93,19 @@ public class ProjectCommandServiceImpl implements ProjectCommandService{
 
         return ProjectConverter.toUpdateProjectResultDTO(existProject);
     }
+
+    // 프로젝트 삭제
+    @Override
+    @Transactional
+    public void deleteProject(Long projectId){
+
+        // 프로젝트 찾기
+        Project project = projectRepository.findById(projectId)
+                .orElseThrow(() -> new ProjectHandler(ErrorStatus.PROJECT_NOT_FOUND));
+
+        // 이미지 삭제
+        imageCommandService.deleteProjectImage(project);
+        
+        projectRepository.delete(project);
+    }
 }
