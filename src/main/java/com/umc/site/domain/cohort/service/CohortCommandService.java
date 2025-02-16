@@ -10,4 +10,7 @@ public interface CohortCommandService {
 
     // 기수 수정
     CohortResponseDTO.UpdateCohortResultDTO updateCohort(Long cohortId, CohortRequestDTO.UpdateCohortDTO request);
+
+    // 기수 삭제
+    void deleteCohort(Long cohortId);
 }

@@ -47,4 +47,17 @@ public class CohortController {
 
         return ApiResponse.onSuccess(cohortCommandService.updateCohort(cohortId, request));
     }
+
+    // 기수 삭제
+    @Operation(summary = "기수 삭제", description = "프로젝트 기존 기수를 삭제합니다.")
+    @DeleteMapping("/projects/cohort/{cohortId}")
+    @Parameters({
+            @Parameter(name = "cohortId", description = "기수의 ID, cohortId 입니다.")
+    })
+    public ApiResponse<Void> deleteCohort(@PathVariable(name = "cohortId") Long cohortId) {
+
+        cohortCommandService.deleteCohort(cohortId);
+
+        return ApiResponse.onSuccess(null);
+    }
 }
