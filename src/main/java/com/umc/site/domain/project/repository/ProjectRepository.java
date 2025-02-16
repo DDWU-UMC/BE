@@ -10,6 +10,6 @@ import java.util.List;
 public interface ProjectRepository  extends JpaRepository<Project, Long> {
 
     // n기 다른 프로젝트 보기 목록 조회
-    @Query("SELECT p FROM Project p WHERE p.cohort.id = :cohortId AND p.id <> :projectId ORDER BY FUNCTION('RAND') LIMIT 3")
+    @Query("SELECT p FROM Project p WHERE p.cohort.id = :cohortId AND p.id <> :projectId ORDER BY FUNCTION('RAND') LIMIT 6")
     List<Project> findRandomProjectsByCohortId(@Param("cohortId") Long cohortId, @Param("projectId") Long projectId);
 }
