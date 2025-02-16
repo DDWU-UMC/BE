@@ -63,9 +63,6 @@ public class CohortCommandServiceImpl implements CohortCommandService {
             imageCommandService.deleteProjectImage(project);
         }
 
-        // 프로젝트 삭제
-        projectRepository.deleteByCohortId(cohortId);
-
         // Cohort 삭제
         cohortRepository.delete(cohort);
     }
