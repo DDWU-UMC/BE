@@ -40,7 +40,6 @@ public class ProjectRequestDTO {
         private ServiceType serviceType;
 
         // 프로젝트 설명
-        @NotBlank
         private String description;
 
         // 프로젝트 한줄 소개
@@ -78,7 +77,6 @@ public class ProjectRequestDTO {
         @NotNull(message = "WEB/IOS/ANDROID")
         private ServiceType serviceType;    // 서비스 유형
 
-        @NotBlank
         private String description;  // 프로젝트 설명
 
         @NotBlank
