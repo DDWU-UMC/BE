@@ -25,7 +25,7 @@ public class ProjectResponseDTO {
         private String frontEnd;
         private String backEnd;
         private String design;
-        private ServiceType serviceType;
+        private String serviceType;
         private ImageResponseDTO.ImageDTO image;
     }
 
@@ -38,7 +38,7 @@ public class ProjectResponseDTO {
         private Long projectId;
         private String cohort;
         private String title;
-        private ServiceType serviceType;
+        private String serviceType;
         private String pm;
         private String frontEnd;
         private String backEnd;
@@ -57,7 +57,7 @@ public class ProjectResponseDTO {
     public static class OtherProjectDTO {
         private Long projectId;
         private String title;
-        private ServiceType serviceType;
+        private String serviceType;
         private ImageResponseDTO.ImageDTO image;
     }
 
