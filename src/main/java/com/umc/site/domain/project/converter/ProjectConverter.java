@@ -23,7 +23,7 @@ public class ProjectConverter {
                 .frontEnd(project.getFrontEnd())
                 .backEnd(project.getBackEnd())
                 .design(project.getDesign())
-                .serviceType(project.getServiceType())
+                .serviceType(project.getServiceType().toString())
                 .image(ImageConverter.toImageDTO(image))
                 .build();
     }
@@ -34,7 +34,7 @@ public class ProjectConverter {
         return ProjectResponseDTO.ProjectDetailDTO.builder()
                 .projectId(project.getId())
                 .title(project.getTitle())
-                .serviceType(project.getServiceType())
+                .serviceType(project.getServiceType().toString())
                 .pm(project.getPm())
                 .frontEnd(project.getFrontEnd())
                 .backEnd(project.getBackEnd())
@@ -54,7 +54,7 @@ public class ProjectConverter {
         return ProjectResponseDTO.OtherProjectDTO.builder()
                 .projectId(project.getId())
                 .title(project.getTitle())
-                .serviceType(project.getServiceType())
+                .serviceType(project.getServiceType().toString())
                 .image(ImageConverter.toImageDTO(image))
                 .build();
     }
