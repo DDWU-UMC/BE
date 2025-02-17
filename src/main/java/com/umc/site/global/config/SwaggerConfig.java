@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SwaggerConfig {
     @Bean
-    public OpenAPI UMCstudyAPI() {
+    public OpenAPI UMCSiteAPI() {
         Info info = new Info()
                 .title("UMC Recruiting Site API")
                 .description("UMC Recruiting Site API 명세서")
